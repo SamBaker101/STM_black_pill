@@ -95,13 +95,7 @@ int main(void)
   while (1)
   {
     /* USER CODE END WHILE */
-    HAL_GPIO_WritePin(GPIOC, GPIO_PIN_13, 1);
-
-    HAL_Delay(5000);
-    
-    HAL_GPIO_WritePin(GPIOC, GPIO_PIN_13, 0);
-    
-    HAL_Delay(5000);
+	  Blinky(2000);
     /* USER CODE BEGIN 3 */
   }
   /* USER CODE END 3 */
@@ -179,7 +173,15 @@ static void MX_GPIO_Init(void)
 }
 
 /* USER CODE BEGIN 4 */
+void Blinky(int delay){
+    HAL_GPIO_WritePin(GPIOC, GPIO_PIN_13, 1);
 
+    HAL_Delay(delay);
+
+    HAL_GPIO_WritePin(GPIOC, GPIO_PIN_13, 0);
+
+    HAL_Delay(delay);
+}
 /* USER CODE END 4 */
 
 /**

@@ -14,6 +14,6 @@ ST-Link V2
 
     - Blinky 
     - Motor Controller
-    - Read from Sensors
-    - Serial Communication
+    - Read Data from Sensors
+    - Serial Communication (2-way)
 
