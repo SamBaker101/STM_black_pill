@@ -16,9 +16,7 @@ Since this project will include a number of small independant programs, I will b
 
 ### void Blinky(int delay)
 
-Not too much to say here, this is a standard blinky program which takes a delay value as an argument. The full cycle time will be delay*2 as the delay period is used both after turning the LED on and turning it back off.
-
-I would like to add an argument for this function to specify the GPIO used in future.
+Not too much to say here, this is a standard blinky program which takes a delay value and gpio pin as an argument. The full cycle time will be delay*2 as the delay period is used both after turning the LED on and turning it back off.
 
 ## Targets
 

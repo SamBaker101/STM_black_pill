@@ -53,7 +53,7 @@ extern "C" {
 void Error_Handler(void);
 
 /* USER CODE BEGIN EFP */
-void Blinky(int delay);
+void Blinky(uint32_t delay, uint16_t pin);
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/
