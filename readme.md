@@ -21,7 +21,7 @@ ST-Link V2
 
 Since this project will include a number of small independant programs, I will be seperating each program into a function which will enclose it's main loop actions. For the time being these functions are still included in main(). I will comment out all but the functions currently in use in the main_loop in main.c. These functions will be detailed below:
 
-### void Blinky(uint32_t delay, uint16_t pin)
+### void Blinky(uint32_t delay, GPIO_TypeDef* bank, uint16_t pin)
 
 Not too much to say here, this is a standard blinky program which takes a delay value and gpio pin as an argument. The full cycle time will be delay*2 as the delay period is used both after turning the LED on and turning it back off.
 
