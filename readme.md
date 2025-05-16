@@ -14,13 +14,13 @@ ST-Link V2
 
 Since this project will include a number of small independant programs, I will be seperating each program into a function which will enclose it's main loop actions. These functions will be detailed below:
 
-### void Blinky(int delay)
+### void Blinky(uint32_t delay, uint16_t pin)
 
 Not too much to say here, this is a standard blinky program which takes a delay value and gpio pin as an argument. The full cycle time will be delay*2 as the delay period is used both after turning the LED on and turning it back off.
 
 ## Targets
 
-    - Blinky 
+    - Led with Button
     - Motor Controller
     - Read Data from Sensors
     - Serial Communication (2-way)
