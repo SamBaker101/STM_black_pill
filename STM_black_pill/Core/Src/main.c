@@ -95,8 +95,9 @@ int main(void)
   while (1)
   {
     /* USER CODE END WHILE */
-	  Blinky(100, GPIOB, GPIO_PIN_10);
-    /* USER CODE BEGIN 3 */
+	  //Blinky(100, GPIOB, GPIO_PIN_10);
+	  Pressy(GPIOB, GPIO_PIN_9, GPIO_PIN_10);
+	/* USER CODE BEGIN 3 */
   }
   /* USER CODE END 3 */
 }
@@ -162,6 +163,8 @@ static void MX_GPIO_Init(void)
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(GPIOC, GPIO_PIN_13, GPIO_PIN_RESET);
   HAL_GPIO_WritePin(GPIOB, GPIO_PIN_10, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_9, GPIO_PIN_RESET);
+
 
   /*Configure GPIO pin : PC13 */
   GPIO_InitStruct.Pin = GPIO_PIN_13;
@@ -177,6 +180,10 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
 
+  GPIO_InitStruct.Pin = GPIO_PIN_9;
+  GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
+  GPIO_InitStruct.Pull = GPIO_PULLUP;
+  HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
   /* USER CODE BEGIN MX_GPIO_Init_2 */
 
   /* USER CODE END MX_GPIO_Init_2 */
@@ -191,6 +198,15 @@ void Blinky(uint32_t delay, GPIO_TypeDef* bank, uint16_t pin){
     HAL_GPIO_WritePin(bank, pin, 0);
 
     HAL_Delay(delay);
+}
+
+void Pressy(GPIO_TypeDef* bank, uint16_t input_pin, uint16_t output_pin){
+	if(!HAL_GPIO_ReadPin(bank, input_pin)){
+		HAL_GPIO_WritePin(bank, output_pin, 1);
+	} else {
+		HAL_GPIO_WritePin(bank, output_pin, 0);
+	}
+	HAL_Delay(50);
 }
 /* USER CODE END 4 */
 

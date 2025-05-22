@@ -54,6 +54,8 @@ void Error_Handler(void);
 
 /* USER CODE BEGIN EFP */
 void Blinky(uint32_t delay, GPIO_TypeDef* bank, uint16_t pin);
+
+void Pressy(GPIO_TypeDef* bank, uint16_t input_pin, uint16_t output_pin);
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/
