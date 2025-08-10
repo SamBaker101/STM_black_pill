@@ -212,7 +212,7 @@ void Pressy(GPIO_TypeDef* bank, uint16_t input_pin, uint16_t output_pin){
 	HAL_Delay(50);
 }
 
-void GenPWM(uint32_t value){
+void GenPWM(Servo *servo, uint32_t value){
   uint32_t resolution = 2**12;
   uint32_t range_of_motion = 120;
   uint32_t duty_cycle = (resolution/range_of_motion) * (value/100.0); // Convert degrees to pulse width (0-2000us)
@@ -220,9 +220,9 @@ void GenPWM(uint32_t value){
 }
 
 void ServoBasic(Servo *servo){
-  GenPWM(90); 
+  GenPWM(servo, 90); 
   HAL_Delay(2000); // Wait for 2 seconds
-  GenPWM(10); 
+  GenPWM(servo, 10); 
   HAL_Delay(2000); // Wait for 2 seconds
 }
 /* USER CODE END 4 */

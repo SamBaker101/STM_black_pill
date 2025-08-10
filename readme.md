@@ -31,7 +31,7 @@ Not too much to say here, this is a standard blinky program which takes a delay 
 
 Here we are using the two GPIO pins from a single bank. One as input and one as output. The input pin is expected to be set up with a pullup resistor. When it goes low the output pin goes high. I wired this with a button and LED so that when the button is pressed the LED turns on.
 
-### void GenPWM(uint32_t value)
+### void GenPWM(Servo *servo, uint32_t value)
 
 Value is given as a percentage of the maximum range of motion for the servo. This value is converted into a duty cycle and written to the PWM pin of the associated servo
 
