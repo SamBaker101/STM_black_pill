@@ -21,7 +21,7 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include<Servo.h>
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -54,7 +54,8 @@ static void MX_GPIO_Init(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-
+int servoPin = PA0;
+Servo servo;
 /* USER CODE END 0 */
 
 /**
@@ -96,10 +97,11 @@ int main(void)
   {
     /* USER CODE END WHILE */
 	  //Blinky(100, GPIOB, GPIO_PIN_10);
-	  Pressy(GPIOB, GPIO_PIN_9, GPIO_PIN_10);
-	/* USER CODE BEGIN 3 */
+	  //Pressy(GPIOB, GPIO_PIN_9, GPIO_PIN_10);
+    ServoBasic(servo);
+
   }
-  /* USER CODE END 3 */
+
 }
 
 /**
@@ -185,6 +187,7 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Pull = GPIO_PULLUP;
   HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
   /* USER CODE BEGIN MX_GPIO_Init_2 */
+  servo.attach(servoPin);
 
   /* USER CODE END MX_GPIO_Init_2 */
 }
@@ -207,6 +210,20 @@ void Pressy(GPIO_TypeDef* bank, uint16_t input_pin, uint16_t output_pin){
 		HAL_GPIO_WritePin(bank, output_pin, 0);
 	}
 	HAL_Delay(50);
+}
+
+void GenPWM(uint32_t value){
+  uint32_t resolution = 2**12;
+  uint32_t range_of_motion = 120;
+  uint32_t duty_cycle = (resolution/range_of_motion) * (value/100.0); // Convert degrees to pulse width (0-2000us)
+  servo.write(duty_cycle); // Set the servo position based on the duty cycle
+}
+
+void ServoBasic(Servo *servo){
+  GenPWM(90); 
+  HAL_Delay(2000); // Wait for 2 seconds
+  GenPWM(10); 
+  HAL_Delay(2000); // Wait for 2 seconds
 }
 /* USER CODE END 4 */
 

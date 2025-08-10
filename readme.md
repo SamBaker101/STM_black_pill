@@ -17,6 +17,8 @@ STM Black Pill : STM32F401CCU6
 
 ST-Link V2
 
+WS-FS90MG Servo Motor
+
 ## Structure
 
 Since this project will include a number of small independant programs, I will be seperating each program into a function which will enclose it's main loop actions. For the time being these functions are still included in main. I will comment out all but the functions currently in use in the main_loop in main.c. The functions currently available are:
